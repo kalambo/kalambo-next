@@ -33,21 +33,14 @@
 
     [:h3, Values],
     [class: cols group,
-      [[:ul, [:li, "Nil, the empty value"]]],
-      [[class: code group,
-        [:pre, "
-          0
-          \"\"
-        "],
-      ]],
-    ],
-    [class: cols group,
-      [[:ul, [:li, "Alphanumeric words"]]],
+      [[:ul, [:li, "Word made of letters and numbers"]]],
       [[class: code group,
         [:pre, "
           Hello
-          123
-          A1
+          a1
+          X Y Z
+          option 5
+          First name
         "],
       ]],
     ],
@@ -60,26 +53,95 @@
       ]],
     ],
     [class: cols group,
-      [[:ul, [:li, "Dates (from human readable value)"]]],
+      [[:ul, [:li, "Negative values"]]],
       [[class: code group,
         [:pre, "
-          @tomorrow
-        "],
-        [:pre, "
-          \"2018-10-16T21:42:09.084Z\"
+          -1
+          -Hello
         "],
       ]],
     ],
     [class: cols group,
-      [[:ul, [:li, "Quoted text (for non-alphanumeric characters)"]]],
+      [[:ul, [:li, "Extra spaces are ignored"]]],
       [[class: code group,
         [:pre, "
-          \"hi there!\"
+          Hello   123
+        "],
+        [:pre, "
+          Hello 123
+        "],
+      ]],
+    ],
+    [class: cols group,
+      [[:ul, [:li, "Multi-value (used for sorting)"]]],
+      [[class: code group,
+        [:pre, "
+          Hello | 123
+        "],
+        [:pre, "
+          \"Hello|123\"
         "],
       ]],
     ],
 
-    [:h3, Operations],
+    [:h3, Quote values],
+    [class: cols group,
+      [[:ul, [:li, "Characters other than letters or numbers"]]],
+      [[class: code group,
+        [:pre, "
+          \"£5\"
+          \"Let's go!\"
+        "],
+      ]],
+    ],
+    [class: cols group,
+      [[:ul, [:li, "Extra spaces"]]],
+      [[class: code group,
+        [:pre, "
+          \"Hello   123\"
+        "],
+      ]],
+    ],
+    [class: cols group,
+      [[:ul, [:li, "The empty value, nil"]]],
+      [[class: code group,
+        [:pre, "
+          \"\"
+        "],
+      ]],
+    ],
+
+    [:h3, Data values],
+    [class: cols group,
+      [[:ul, [:li, "Dates"]]],
+      [[class: code group,
+        [:pre, "
+          @now
+          @tomorrow
+          @\"10/05/80\"
+        "],
+        [:pre, "
+          \"2018-10-18T20:19:51.515Z\"
+          \"2018-10-19T11:00:00.000Z\"
+          \"1980-10-05T11:00:00.000Z\"
+        "],
+      ]],
+    ],
+    [class: cols group,
+      [[:ul, [:li, "Locations (in progress)"]]],
+      [[class: code group,
+        [:pre, "
+          @@here
+          @@london
+        "],
+        [:pre, "
+          ...
+          ...
+        "],
+      ]],
+    ],
+
+    [:h3, Arithmetic],
     [class: cols group,
       [[:ul, [:li, "Addition, subtraction, multiplication, division"]]],
       [[class: code group,
@@ -119,146 +181,77 @@
         "],
       ]],
     ],
-    [class: cols group,
-      [[:ul, [:li, "Not: nil => 1, anything else => nil"]]],
-      [[class: code group,
-        [:pre, "
-          !0
-          !5
-          !hello
-        "],
-        [:pre, "
-          1
-          0
-          0
-        "],
-      ]],
-    ],
-    [class: cols group,
-      [[:ul, [:li, "Minus"]]],
-      [[class: code group,
-        [:pre, "
-          -1
-          -hello
-        "],
-        [:pre, "
-          \"-1\"
-          \"-hello\"
-        "],
-      ]],
-    ],
 
-    [:h3, "Joining values"],
+    [:h3, "True / False"],
     [class: cols group,
-      [[:ul, [:li, "Consecutive values are joined with a space"]]],
-      [[class: code group,
-        [:pre, "
-          hello 123
-          a b c
-        "],
-        [:pre, "
-          \"hello world\"
-          \"a b c\"
-        "],
-      ]],
-    ],
-    [class: cols group,
-      [[:ul, [:li, "Extra spaces are ignored (use quotes to keep)"]]],
-      [[class: code group,
-        [:pre, "
-          hello   123
-          \"hello   123\"
-        "],
-        [:pre, "
-          \"hello 123\"
-          \"hello   123\"
-        "],
-      ]],
-    ],
-    [class: cols group,
-      [[:ul, [:li, "Without space"]]],
-      [[class: code group,
-        [:pre, "
-          hello .. 123
-        "],
-        [:pre, "
-          hello123
-        "],
-      ]],
-    ],
-    [class: cols group,
-      [[:ul, [:li, "With divider (used for sorting)"]]],
-      [[class: code group,
-        [:pre, "
-          hello | 123
-        "],
-        [:pre, "
-          \"hello|123\"
-        "],
-      ]],
-    ],
-
-    [:h3, Comparisons],
-    [class: cols group,
-      [[:ul, [:li, "Equal, not equal"]]],
+      [[:ul, [:li, "Equal"]]],
       [[class: code group,
         [:pre, "
           2 = 6
-          8 != 2
         "],
         [:pre, "
-          0
-          1
+          false
         "],
       ]],
     ],
     [class: cols group,
-      [[:ul, [:li, "Less than, greater than"]]],
+      [[:ul, [:li, "Less than (or equal), greater than (or equal)"]]],
       [[class: code group,
         [:pre, "
           5 < 3
-          8 > 2
-        "],
-        [:pre, "
-          0
-          1
-        "],
-      ]],
-    ],
-    [class: cols group,
-      [[:ul, [:li, "Less than or equal, greater than or equal"]]],
-      [[class: code group,
-        [:pre, "
           5 <= 5
+          8 > 2
           1 >= 3
         "],
         [:pre, "
-          1
-          0
+          false
+          true
+          true
+          false
         "],
       ]],
     ],
-
-    [:h3, "And / Or"],
     [class: cols group,
-      [[:ul, [:li, "And: any nil => nil, otherwise non-nil"]]],
+      [[:ul, [:li, "Not equal"]]],
+      [[class: code group,
+        [:pre, "
+          8 != 2
+        "],
+        [:pre, "
+          true
+        "],
+      ]],
+    ],
+    [class: cols group,
+      [[:ul, [:li, "Not"]]],
+      [[class: code group,
+        [:pre, "
+          !(3 < 5)
+        "],
+        [:pre, "
+          false
+        "],
+      ]],
+    ],
+    [class: cols group,
+      [[:ul, [:li, "And: (all items true)"]]],
       [[class: code group,
         [:pre, "
           (1 = 2, 3 < 4, 5 = 5)
         "],
         [:pre, "
-          (0, 1, 1) => 0
+          (false, true, true) => false
         "],
       ]],
     ],
     [class: cols group,
-      [[:ul, [:li, "Or: all nil => nil, otherwise non-nil"]]],
+      [[:ul, [:li, "Or: {any item true}"]]],
       [[class: code group,
         [:pre, "
           {1 = 2, 3 < 4, 5 = 5}
         "],
         [:pre, "
-          {0, 1, 1} => 1
+          {false, true, true} => true
         "],
       ]],
     ],
